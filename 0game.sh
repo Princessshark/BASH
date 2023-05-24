@@ -10,10 +10,16 @@ enemy2="Ego"
 #player info
 echo "Enter your avatar name"
 	read name
-echo "you died $name"
-	sleep 3
-echo "Just Kidding"
 
+if [[ $name == "" ]]; then
+	echo "Ahh! So you are one of those meatheads.."
+	sleep 2
+	exit 1
+else
+	echo "you died $name"
+	sleep 3
+	echo "Just Kidding"
+fi
 #LEVEL0
 #sucess probability 50%
 
@@ -28,16 +34,26 @@ echo ".."
 	sleep 0.5
 echo "..."
 
-enemy=$(( $RANDOM % 2 ))
+	enemy=$(( $RANDOM % 2 ))
 
 echo "pick a number to start the battle (0/1)"
 	read number
 
+if [[ $number == "" ]]; then
+	echo "Some meatheads never learn"
+	exit 1
+elif [[ $enemy == $number || $number == "stop" ]]; then
+	echo "okay"
+	sleep 2
+	echo "wait what was i suppose to do again.. yeah the battle and stuff"
+	sleep 2
 #cheatcode = unfair
-if [[ $enemy == $number || $number == "unfair" ]]; then
 	echo "$enemy1 has been slayed!"
-	sleep 3
-	echo "You have my attention $name"
+	sleep 1
+	clear
+	sleep 1
+	echo "VOICE INSIDE THE HEAD : You have my attention $name" 
+	echo "what was that all about i wonder."
 else
 	echo "You Died"
 	sleep 1
@@ -69,7 +85,10 @@ enemy=$(( $RANDOM % 3 ))
 echo "pick a number to start the battle (0/2)"
 	read number
 
-if [[ $enemy == $number || $number == "stop" ]]; then
+if [[ $number == "" ]]; then
+	echo "Mindblowing"
+	exit 1
+elif [[ $enemy == $number || $number == "stop" ]]; then
 	echo "$enemy2 has been slayed!"
 	sleep 3
 	echo "You are more than you let of $name"
