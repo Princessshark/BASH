@@ -5,7 +5,7 @@
 # Last Modified: 12-06-2024
 
 # DESCRIPTION
-# This file when executed back's up the users entire home directory in as a tar fil
+# This file when executed back's up the users entire home directory in as a tar file
 # The backeup file will be available in the ~/Documents directory
 
 # Usage
