@@ -2,36 +2,34 @@
 
 # Author: Bipul Sharma
 # Date Created: 10-01-2024
-# Last Modified: 12-06-2024
+# Last Modified: 13-03-2025
 
-# DESCRIPTION
-# This file when executed back's up the users entire home directory in as a tar file
-# The backeup file will be available in the ~/Documents directory
+# Description
+# By executing this script you can back up data from your system
 
 # Usage
-# backup_script_bash_shell_of_host_home_to_host_desktop_with_date&&time.
+# Inputs are Case Insensitive Press Y to Start || N to Abort, post which press enter to confirm.(y/n)
+
+activedir=$(pwd)
 
 
-
-time=$(date)
-clear
 echo "Hello "${USER^}
 sleep 2
+echo "Press Y to Start || N to Abort (followed by an enter key to submit)"    
+	read userInput
 clear
-echo  "Are you certain on creating a backup for"$time "(Y/N)"
-	read response
-if [[ $response == "" ]]; then
-	echo "Invalid parameter selected."
-	sleep 1
-       	echo "Re-execute the backup file, and be sure to select (Y/N) to confirm or deny the process."
-	exit 1
-elif [[ $response == "n" || $response == "N" ]]; then
-	echo "Abort" ${USER##} "backup for" $time
-	exit 1
-else 
-	sleep 2
-	tar -cvf ~/Documents/backup_date_"$(date +%d-%m-%Y_%H-%M-%s)".tar ~/* 2>/dev/null
+if [[ $userInput == "Y" || $userInput == "y" ]]; then
+	echo "A backup on, $date is created $activedir"
+       	sleep 2	
+	#Date is being projected using command substitution
+	tar -cvf $activedir/backup_date_"$(date +%d-%m-%Y_%H-%M-%s)".tar ~/* 2>/dev/null    
 	clear
+	echo "Backup Completed Succesfully at $activedir."
+	exit 0
+elif [[ $userInput == "N" || $userInput == "n" ]]; then
+	echo "About Backup Process."
+	exit 0
+else
+	echo "Error: Invalid Parameter."
+	exit 1
 fi
-echo "Your backup has been created"
-
