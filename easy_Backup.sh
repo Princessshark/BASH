@@ -5,7 +5,7 @@
 # Last Modified: 13-03-2025
 
 # Description
-# By executing this script you can back up data from your system
+# By executing this script you can back up data from your system in your working directory.
 
 # Usage
 # Inputs are Case Insensitive Press Y to Start || N to Abort, post which press enter to confirm.(y/n)
