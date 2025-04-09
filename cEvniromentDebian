@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Author: Bipul Sharma         	 
+
+# Date Created: 26-03-2025
+# Last Modified: 26-03-2025
+
+# Description
+# Create nested directories and update the system to practice C in a Debian-based container environment.
+
+# Usage
+# Run the script to set up a nested directory structure and update the environment.
+
+
+# Updating the package list
+echo "Updating package list..."
+apt update -y
+apt install vim gcc git man tmux -y
+
+# Creating directories
+echo "Creating directories..."
+mkdir -p ~/cTemp/exe
+
+# Confirmation of directory creation
+if [[ -d ~/cTemp/exe ]]; then
+	echo "Directories created successfully: ~/cTemp/exe"
+else
+	echo "Failed to create directories."
+	exit 1
+fi
+cd ~/cTemp
+sleep 2
+clear
+echo "Setup completed successfully."
